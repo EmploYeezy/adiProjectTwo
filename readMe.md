@@ -11,3 +11,7 @@ theBluePrint:
 
 theERD:
 ![](projTwo/playerListErd.jpg)
+
+userStories:
+   Role   	Context   	Goal	       Benefit/Purpose
+1. User		See the current roster of the lakers
