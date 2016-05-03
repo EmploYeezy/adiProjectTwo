@@ -16,7 +16,7 @@ public class Player {
 
     @Override
     public String toString() {
-        return "PLayer{" +
+        return "Player{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", year='" + year + '\'' +

@@ -49,7 +49,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         String[] projection = new String[] {"id", "name", "year"};
         String selection = "id = ?";
         String[] selectionArgs = new String[]{ String.valueOf(id)};
-        Cursor cursor = db.query("players", projection, selection, selectionArgs, null, null, null, null);
+        Cursor cursor = db.query("Players", projection, selection, selectionArgs, null, null, null, null);
         cursor.moveToFirst();
         String name = cursor.getString( cursor.getColumnIndex("name"));
         String year = cursor.getString( cursor.getColumnIndex("year"));
@@ -61,7 +61,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = getWritableDatabase();
         String selection = "id =?";
         String [] selectionArgs = new String[] { String.valueOf(id)};
-        db.delete("players", selection, selectionArgs);
+        db.delete("Players", selection, selectionArgs);
     }
 
 

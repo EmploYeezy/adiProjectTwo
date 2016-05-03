@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.SearchView;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
@@ -24,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
         db.insert(2, "D'Angelo Russel", "2015");
 
         Player retrievedPlayer = db.getPlayer(2);
+        ((TextView)findViewById(R.id.text)).setText(retrievedPlayer.toString());
 
     }
 
