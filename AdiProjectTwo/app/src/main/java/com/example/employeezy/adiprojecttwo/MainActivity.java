@@ -19,7 +19,6 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        rosterListButton = (Button) findViewById(R.id.roster_list_button);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         handleIntent(getIntent());
@@ -31,10 +30,8 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent engageRoster = new Intent(MainActivity.this, RosterList.class);
                 startActivity(engageRoster);
-
             }
         });
-
 
         //hardcoded seed data for the database
         DatabaseHelper db = new DatabaseHelper(this);
@@ -43,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
         db.insert(2, "D'Angelo Russel", "2015");
 
         //really lame output test
-        Player retrievedPlayer = db.getPlayer(2);
+        Player retrievedPlayer = db.getPlayer(1);
         ((TextView)findViewById(R.id.text)).setText(retrievedPlayer.toString());
     }
 

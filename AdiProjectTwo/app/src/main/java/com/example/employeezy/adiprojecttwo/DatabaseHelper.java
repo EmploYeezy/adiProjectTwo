@@ -63,8 +63,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         String [] selectionArgs = new String[] { String.valueOf(id)};
         db.delete("Players", selection, selectionArgs);
     }
-
-
 }
 
 
