@@ -9,11 +9,21 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.employeezy.adiprojecttwo.MainActivity">
 
-    <TextView
-        android:id="@+id/count_text_view"
-        android:layout_width="wrap_content"
+    <Button
+        android:id="@+id/player_button"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Search for a number"
+        android:layout_marginTop="20dp"
+        android:text="players"
+        android:textSize="30dp"/>
+
+    <Button
+        android:id="@+id/position_button"
+        android:layout_below="@+id/player_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="positions"
         android:textSize="30dp"/>
 
 </RelativeLayout>
