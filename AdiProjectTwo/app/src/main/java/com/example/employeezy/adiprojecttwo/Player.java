@@ -3,6 +3,8 @@ package com.example.employeezy.adiprojecttwo;
 /**
  * Created by EmployYeezy on 5/2/16.
  */
+
+//Player profile setup page
 public class Player {
 
     int id;
