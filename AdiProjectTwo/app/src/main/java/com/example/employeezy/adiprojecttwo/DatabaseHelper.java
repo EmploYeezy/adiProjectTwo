@@ -12,7 +12,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
 
-    public static final int DATABASE_VERSION = 4;
+    public static final int DATABASE_VERSION = 5;
     public static final String DATABASE_NAME = "Players.db";
 
     public static final String PLAYERS_TABLE = "players";
@@ -62,43 +62,94 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    //being hard coding database info for Players_Table
+    //begin hard coding database info for Players_Table
     private void loadPlayersTable(SQLiteDatabase db) {
         ContentValues values = new ContentValues();
+
         values.put(COL_PLAYER_NAME, "Jordan Clarkson");
         values.put(COL_PLAYER_NUM, 6);
         values.put(COL_ROOKIE_YEAR, 2014);
-        values.put(COL_POSITION, "Shooting Guard");
+        values.put(COL_POSITION, "Guard");
         values.put(COL_POSITION_NUM, 2);
         db.insert(PLAYERS_TABLE, null, values);
 
         values.put(COL_PLAYER_NAME, "D'Angelo Russell");
         values.put(COL_PLAYER_NUM, 0);
         values.put(COL_ROOKIE_YEAR, 2015);
-        values.put(COL_POSITION, "Point Gaurd");
+        values.put(COL_POSITION, "Guard");
         values.put(COL_POSITION_NUM, 1);
         db.insert(PLAYERS_TABLE, null, values);
 
         values.put(COL_PLAYER_NAME, "Julius Randle");
         values.put(COL_PLAYER_NUM, 30);
         values.put(COL_ROOKIE_YEAR, 2014);
-        values.put(COL_POSITION, "Power forward");
+        values.put(COL_POSITION, "Forward");
         values.put(COL_POSITION_NUM, 4);
         db.insert(PLAYERS_TABLE, null, values);
 
         values.put(COL_PLAYER_NAME, "Metta World Peace");
         values.put(COL_PLAYER_NUM, 37);
-        values.put(COL_ROOKIE_YEAR, 1996);
-        values.put(COL_POSITION, "Small Forward");
+        values.put(COL_ROOKIE_YEAR, 2001);
+        values.put(COL_POSITION, "Forward");
         values.put(COL_POSITION_NUM, 3);
         db.insert(PLAYERS_TABLE, null, values);
 
         values.put(COL_PLAYER_NAME, "Tarik Black");
         values.put(COL_PLAYER_NUM, 28);
         values.put(COL_ROOKIE_YEAR, 2014);
-        values.put(COL_POSITION, "Ceter");
+        values.put(COL_POSITION, "Center");
         values.put(COL_POSITION_NUM, 5);
         db.insert(PLAYERS_TABLE, null, values);
+
+        values.put(COL_PLAYER_NAME, "Brandon Bass");
+        values.put(COL_PLAYER_NUM, 2);
+        values.put(COL_ROOKIE_YEAR,2006);
+        values.put(COL_POSITION, "Forward");
+        values.put(COL_POSITION_NUM, 4);
+        db.insert(PLAYERS_TABLE, null, values);
+
+        values.put(COL_PLAYER_NAME, "Anthony Brown");
+        values.put(COL_PLAYER_NUM, 3);
+        values.put(COL_ROOKIE_YEAR, 2015);
+        values.put(COL_POSITION, "Forward");
+        values.put(COL_POSITION_NUM, 3);
+        db.insert(PLAYERS_TABLE, null, values);
+
+        values.put(COL_PLAYER_NAME, "Larry Nance Jr.");
+        values.put(COL_PLAYER_NUM, 7);
+        values.put(COL_ROOKIE_YEAR, 2015);
+        values.put(COL_POSITION, "Forward");
+        values.put(COL_POSITION_NUM, 4);
+        db.insert(PLAYERS_TABLE, null, values);
+
+        values.put(COL_PLAYER_NAME, "Lou Williams");
+        values.put(COL_PLAYER_NUM, 23);
+        values.put(COL_ROOKIE_YEAR, 2006);
+        values.put(COL_POSITION, "Guard");
+        values.put(COL_POSITION_NUM, 2);
+        db.insert(PLAYERS_TABLE, null, values);
+
+        values.put(COL_PLAYER_NAME, "Marcelo Huertas");
+        values.put(COL_PLAYER_NUM, 9);
+        values.put(COL_ROOKIE_YEAR, 2015);
+        values.put(COL_POSITION, "Guard");
+        values.put(COL_POSITION_NUM, 1);
+        db.insert(PLAYERS_TABLE, null, values);
+
+        values.put(COL_PLAYER_NAME, "Nick 'Swaggy P' Young");
+        values.put(COL_PLAYER_NUM, 0);
+        values.put(COL_ROOKIE_YEAR, 2008);
+        values.put(COL_POSITION, "Forward");
+        values.put(COL_POSITION_NUM, 3);
+        db.insert(PLAYERS_TABLE, null, values);
+
+        values.put(COL_PLAYER_NAME, "Roy Hibbert");
+        values.put(COL_PLAYER_NUM, 17);
+        values.put(COL_ROOKIE_YEAR, 2009);
+        values.put(COL_POSITION, "Center");
+        values.put(COL_POSITION_NUM, 5);
+        db.insert(PLAYERS_TABLE, null, values);
+
     }
 
     public Cursor getRosterData(){
@@ -115,48 +166,4 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
 }
-
-
-
-
-    //Begins old Database
-//    public static final String SQL_CREATE_PLAYER_TABLE =
-//            "CREATE TABLE players ( id INTEGER PRIMARY KEY, name TEXT, year TEXT )";
-//
-//    public static final String SQL_DROP_DROP_PLAYER_TABLE = "DROP TABLE IF EXISTS players";
-//
-//
-//    public void insert(int id, String name, String year) {
-//        SQLiteDatabase db = getWritableDatabase();
-//        ContentValues values = new ContentValues();
-//        values.put("id", id);
-//        values.put("name", name);
-//        values.put("year", year);
-//
-//        db.insert("Players", null, values);
-//    }
-//
-//    public Player getPlayer(int id){
-//
-//        SQLiteDatabase db = getReadableDatabase();
-//        String[] projection = new String[] {"id", "name", "year"};
-//        String selection = "id = ?";
-//        String[] selectionArgs = new String[]{ String.valueOf(id)};
-//        Cursor cursor = db.query("Players", projection, selection, selectionArgs, null, null, null, null);
-//        cursor.moveToFirst();
-//        String name = cursor.getString( cursor.getColumnIndex("name"));
-//        String year = cursor.getString( cursor.getColumnIndex("year"));
-//
-//        return new Player(id, name, year);
-//    }
-//
-//    public void delete(int id){
-//        SQLiteDatabase db = getWritableDatabase();
-//        String selection = "id =?";
-//        String [] selectionArgs = new String[] { String.valueOf(id)};
-//        db.delete("Players", selection, selectionArgs);
-//    }
-//}
-//
-//
 
