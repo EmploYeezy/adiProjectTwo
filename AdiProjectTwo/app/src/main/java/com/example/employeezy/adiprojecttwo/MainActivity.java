@@ -17,6 +17,8 @@ public class MainActivity extends AppCompatActivity {
     Button rosterListButton;
     Button startersButton;
 
+
+    //Buttons on home screen
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
-
+    ////Beings search function.
     @Override
     protected void onNewIntent(Intent intent) {
         handleIntent(intent);

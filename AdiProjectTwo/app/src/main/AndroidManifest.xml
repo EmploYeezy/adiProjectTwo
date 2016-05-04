@@ -24,7 +24,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".RosterList" />
-        <activity android:name=".StarterList"></activity>
+        <activity android:name=".StarterList" />
+        <activity android:name=".PlayerProfileActivity"></activity>
     </application>
 
 </manifest>

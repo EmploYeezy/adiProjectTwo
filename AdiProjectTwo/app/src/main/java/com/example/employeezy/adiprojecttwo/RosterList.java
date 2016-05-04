@@ -1,12 +1,14 @@
 package com.example.employeezy.adiprojecttwo;
 
 import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.CursorAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -20,6 +22,7 @@ public class RosterList extends AppCompatActivity {
 
         ListView rosterList = (ListView) findViewById(R.id.roster_list);
         Cursor cursor = DatabaseHelper.getInstance(RosterList.this).getRosterData();
+
 
         //this was a test dump of the cursor to make sure our data is happy
         //DatabaseUtils.dumpCursor(cursor);
@@ -43,7 +46,20 @@ public class RosterList extends AppCompatActivity {
                 String rookieYearGetter = cursor.getString(cursor.getColumnIndex(DatabaseHelper.COL_ROOKIE_YEAR));
                 rosterYear.setText(rookieYearGetter);
             }
+
         };
+
         rosterList.setAdapter(rosterAdapter);
+
+        rosterList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(getApplicationContext(), PlayerProfileActivity.class);
+                String playerName = ((TextView) view.findViewById(R.id.roster_player_name)).getText().toString();
+                intent.putExtra("playerName", playerName);
+                startActivity(intent);
+            }
+        });
+
     }
 }
