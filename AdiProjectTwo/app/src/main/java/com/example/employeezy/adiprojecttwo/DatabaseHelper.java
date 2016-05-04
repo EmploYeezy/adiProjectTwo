@@ -64,7 +64,54 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    //begin hard coding database info for Players_Table
+    //pulls the entire roster and displays it in a list in descending order
+    //by Position number (5,4,3,2,1)
+    public Cursor getRosterData(){
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.query(PLAYERS_TABLE, // a. table
+                COL_NAMES, // b. column names
+                null, // c. selections
+                null, // d. selections args
+                null, // e. group by
+                null, // f. having
+                COL_POSITION_NUM + " DESC ", // g. order by
+                null); // h. limit
+        return cursor;
+    }
+
+    //pulls the starters from the roster for StaterList activity
+    public Cursor getStarterData(){
+        SQLiteDatabase db = this.getReadableDatabase();
+        String selections = "starts = ?";
+        String[] selectionsArgs = new String[] {
+                String.valueOf(1)
+        };
+
+        Cursor cursor = db.query(PLAYERS_TABLE, // a. table
+                COL_NAMES, // b. column names
+                selections, // c. selections
+                selectionsArgs,  // d. selections args
+                null, // e. group by
+                null, // f. having
+                null, // g. order by
+                null); // h. limit
+        return cursor;
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+    ///////\/\\\\\\\***************BEGIN HARD CODED DATABASE*****************////////////\/\\\\\\\\\
     private void loadPlayersTable(SQLiteDatabase db) {
         ContentValues values = new ContentValues();
 
@@ -163,43 +210,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(COL_POSITION_NUM, 5);
         values.put(COL_IS_STARTER, 0);
         db.insert(PLAYERS_TABLE, null, values);
-
     }
-
-    //pulls the entire roster and displays it in a list in descending order
-    //by Position number (5,4,3,2,1)
-    public Cursor getRosterData(){
-        SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.query(PLAYERS_TABLE, // a. table
-                COL_NAMES, // b. column names
-                null, // c. selections
-                null, // d. selections args
-                null, // e. group by
-                null, // f. having
-                COL_POSITION_NUM + " DESC ", // g. order by
-                null); // h. limit
-        return cursor;
-    }
-
-    //pulls the starters from the roster for StaterList activity
-    public Cursor getStarterData(){
-        SQLiteDatabase db = this.getReadableDatabase();
-        String selections = "starts = ?";
-        String[] selectionsArgs = new String[] {
-                String.valueOf(1)
-        };
-
-        Cursor cursor = db.query(PLAYERS_TABLE, // a. table
-                COL_NAMES, // b. column names
-                selections, // c. selections
-                selectionsArgs,  // d. selections args
-                null, // e. group by
-                null, // f. having
-                null, // g. order by
-                null); // h. limit
-        return cursor;
-
-    }
-
+    ////////\/\/////////*************END HARD CODED DATABASE**********************////////\/\///////
 }
 

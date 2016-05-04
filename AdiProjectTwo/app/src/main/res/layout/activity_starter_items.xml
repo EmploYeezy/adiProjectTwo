@@ -10,8 +10,7 @@
         android:layout_weight="1"
         android:text="Starter Name"
         android:textSize="20sp"
-        android:textStyle="bold"
-        />
+        android:textStyle="bold"/>
 
     <TextView
         android:id="@+id/starter_position"
@@ -20,7 +19,7 @@
         android:layout_weight="1"
         android:text="position"
         android:textSize="20sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"/>
 
-    </LinearLayout>
+</LinearLayout>
 

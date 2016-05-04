@@ -40,8 +40,6 @@ public class StarterList extends AppCompatActivity {
                 startingPosition.setText(startingPositionGetter);
             }
         };
-
         starterList.setAdapter(starterAdapter);
     }
-
 }
