@@ -10,7 +10,6 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
@@ -32,16 +31,6 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(engageRoster);
             }
         });
-
-        //hardcoded seed data for the database
-        DatabaseHelper db = new DatabaseHelper(this);
-
-        db.insert(1, "Jordan Clarkson", "2014");
-        db.insert(2, "D'Angelo Russel", "2015");
-
-        //really lame output test
-        Player retrievedPlayer = db.getPlayer(1);
-        ((TextView)findViewById(R.id.text)).setText(retrievedPlayer.toString());
     }
 
     @Override

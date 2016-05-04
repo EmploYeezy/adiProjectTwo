@@ -19,23 +19,25 @@ public class RosterList extends AppCompatActivity {
         setContentView(R.layout.activity_roster_list);
 
         ListView rosterList = (ListView) findViewById(R.id.roster_list);
+        Cursor cursor = DatabaseHelper.getInstance(RosterList.this).getRosterData();
 
-        Cursor rosterCursor = (Cursor) new DatabaseHelper(this).getPlayer(1);
-
-        CursorAdapter rosterAdapter = new CursorAdapter(RosterList.this, rosterCursor, 0) {
+        CursorAdapter rosterAdapter = new CursorAdapter(this, cursor, 0) {
             @Override
             public View newView(Context context, Cursor cursor, ViewGroup parent) {
-                return LayoutInflater.from(context).inflate(R.layout.activity_roster_list, parent, false);
+                LayoutInflater layoutInflater = LayoutInflater.from(context);
+                View view = layoutInflater.inflate(R.layout.activity_roster_items, parent,false);
+                return view;
             }
 
             @Override
             public void bindView(View view, Context context, Cursor cursor) {
                 TextView rosterPlayerName = (TextView) view.findViewById(R.id.roster_player_name);
+                String playerNamesGetter = cursor.getString(cursor.getColumnIndex(DatabaseHelper.COL_PLAYER_NAME));
+                rosterPlayerName.setText(playerNamesGetter);
+
                 TextView rosterYear = (TextView) view.findViewById(R.id.roster_year);
-
-                rosterPlayerName.setText(cursor.getString(cursor.getColumnIndex("name")));
-                rosterYear.setText(cursor.getString(cursor.getColumnIndex("year")));
-
+                String rookieYearGetter = cursor.getString(cursor.getColumnIndex(DatabaseHelper.COL_ROOKIE_YEAR));
+                rosterYear.setText(rookieYearGetter);
             }
         };
 
