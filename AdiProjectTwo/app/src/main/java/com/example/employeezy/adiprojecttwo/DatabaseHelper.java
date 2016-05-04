@@ -12,7 +12,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
 
-    public static final int DATABASE_VERSION = 5;
+    public static final int DATABASE_VERSION = 6;
     public static final String DATABASE_NAME = "Players.db";
 
     public static final String PLAYERS_TABLE = "players";
@@ -156,7 +156,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(COL_IS_STARTER, 0);
         db.insert(PLAYERS_TABLE, null, values);
 
-        values.put(COL_PLAYER_NAME, "Roy Hibbert");
+        values.put(COL_PLAYER_NAME, "Roy Hibert");
         values.put(COL_PLAYER_NUM, 17);
         values.put(COL_ROOKIE_YEAR, 2009);
         values.put(COL_POSITION, "Center");
@@ -166,6 +166,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     }
 
+    //pulls the entire roster and displays it in a list in descending order
+    //by Position number (5,4,3,2,1)
     public Cursor getRosterData(){
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.query(PLAYERS_TABLE, // a. table
@@ -177,6 +179,26 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 COL_POSITION_NUM + " DESC ", // g. order by
                 null); // h. limit
         return cursor;
+    }
+
+    //pulls the starters from the roster for StaterList activity
+    public Cursor getStarterData(){
+        SQLiteDatabase db = this.getReadableDatabase();
+        String selections = "starts = ?";
+        String[] selectionsArgs = new String[] {
+                String.valueOf(1)
+        };
+
+        Cursor cursor = db.query(PLAYERS_TABLE, // a. table
+                COL_NAMES, // b. column names
+                selections, // c. selections
+                selectionsArgs,  // d. selections args
+                null, // e. group by
+                null, // f. having
+                null, // g. order by
+                null); // h. limit
+        return cursor;
+
     }
 
 }
