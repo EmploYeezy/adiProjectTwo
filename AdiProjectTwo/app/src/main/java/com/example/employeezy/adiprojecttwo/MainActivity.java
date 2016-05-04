@@ -15,6 +15,7 @@ import android.widget.Toast;
 public class MainActivity extends AppCompatActivity {
 
     Button rosterListButton;
+    Button startersButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +32,18 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(engageRoster);
             }
         });
+
+        //makes the Starting Lineup button on the home screen goto the starters list
+        startersButton = (Button) findViewById(R.id.starters_button);
+        startersButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent engageStarters = new Intent(MainActivity.this, StarterListActivity.class);
+                startActivity(engageStarters);
+            }
+        });
+
+
     }
 
     @Override
