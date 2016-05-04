@@ -79,7 +79,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return cursor;
     }
 
-    //pulls the starters from the roster for StaterList activity
+    //pulls the starters from the database for StaterList activity
     public Cursor getStarterData(){
         SQLiteDatabase db = this.getReadableDatabase();
         String selections = "starts = ?";
