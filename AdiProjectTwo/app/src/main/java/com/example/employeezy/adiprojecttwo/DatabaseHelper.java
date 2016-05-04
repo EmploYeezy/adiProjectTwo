@@ -23,9 +23,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String COL_ROOKIE_YEAR = "rookie_year";
     public static final String COL_POSITION = "position";
     public static final String COL_POSITION_NUM = "position_number";
+    public static final String COL_IS_STARTER = "starts";
 
     public static final String[] COL_NAMES = {COL_PLAYER_NAME, COL_PLAYER_ID, COL_PLAYER_NUM, COL_ROOKIE_YEAR,
-            COL_POSITION, COL_POSITION_NUM};
+            COL_POSITION, COL_POSITION_NUM, COL_IS_STARTER};
 
     private static final String CREATE_PLAYERS_TABLE =
             "CREATE TABLE " + PLAYERS_TABLE +
@@ -35,7 +36,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                     COL_PLAYER_NUM + " INTEGER, " +
                     COL_ROOKIE_YEAR + " INTEGER, " +
                     COL_POSITION + " TEXT, " +
-                    COL_POSITION_NUM + " INTEGER)";
+                    COL_POSITION_NUM + " INTEGER, " +
+                    COL_IS_STARTER + " INTEGER)";
 
     private static DatabaseHelper instance;
 
@@ -71,6 +73,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(COL_ROOKIE_YEAR, 2014);
         values.put(COL_POSITION, "Guard");
         values.put(COL_POSITION_NUM, 2);
+        values.put(COL_IS_STARTER, 1);
         db.insert(PLAYERS_TABLE, null, values);
 
         values.put(COL_PLAYER_NAME, "D'Angelo Russell");
@@ -78,6 +81,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(COL_ROOKIE_YEAR, 2015);
         values.put(COL_POSITION, "Guard");
         values.put(COL_POSITION_NUM, 1);
+        values.put(COL_IS_STARTER, 1);
         db.insert(PLAYERS_TABLE, null, values);
 
         values.put(COL_PLAYER_NAME, "Julius Randle");
@@ -85,6 +89,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(COL_ROOKIE_YEAR, 2014);
         values.put(COL_POSITION, "Forward");
         values.put(COL_POSITION_NUM, 4);
+        values.put(COL_IS_STARTER, 1);
         db.insert(PLAYERS_TABLE, null, values);
 
         values.put(COL_PLAYER_NAME, "Metta World Peace");
@@ -92,6 +97,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(COL_ROOKIE_YEAR, 2001);
         values.put(COL_POSITION, "Forward");
         values.put(COL_POSITION_NUM, 3);
+        values.put(COL_IS_STARTER, 0);
         db.insert(PLAYERS_TABLE, null, values);
 
         values.put(COL_PLAYER_NAME, "Tarik Black");
@@ -99,6 +105,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(COL_ROOKIE_YEAR, 2014);
         values.put(COL_POSITION, "Center");
         values.put(COL_POSITION_NUM, 5);
+        values.put(COL_IS_STARTER, 1);
         db.insert(PLAYERS_TABLE, null, values);
 
         values.put(COL_PLAYER_NAME, "Brandon Bass");
@@ -106,6 +113,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(COL_ROOKIE_YEAR,2006);
         values.put(COL_POSITION, "Forward");
         values.put(COL_POSITION_NUM, 4);
+        values.put(COL_IS_STARTER, 0);
         db.insert(PLAYERS_TABLE, null, values);
 
         values.put(COL_PLAYER_NAME, "Anthony Brown");
@@ -113,6 +121,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(COL_ROOKIE_YEAR, 2015);
         values.put(COL_POSITION, "Forward");
         values.put(COL_POSITION_NUM, 3);
+        values.put(COL_IS_STARTER, 1);
         db.insert(PLAYERS_TABLE, null, values);
 
         values.put(COL_PLAYER_NAME, "Larry Nance Jr.");
@@ -120,6 +129,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(COL_ROOKIE_YEAR, 2015);
         values.put(COL_POSITION, "Forward");
         values.put(COL_POSITION_NUM, 4);
+        values.put(COL_IS_STARTER, 0);
         db.insert(PLAYERS_TABLE, null, values);
 
         values.put(COL_PLAYER_NAME, "Lou Williams");
@@ -127,6 +137,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(COL_ROOKIE_YEAR, 2006);
         values.put(COL_POSITION, "Guard");
         values.put(COL_POSITION_NUM, 2);
+        values.put(COL_IS_STARTER, 0);
         db.insert(PLAYERS_TABLE, null, values);
 
         values.put(COL_PLAYER_NAME, "Marcelo Huertas");
@@ -134,6 +145,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(COL_ROOKIE_YEAR, 2015);
         values.put(COL_POSITION, "Guard");
         values.put(COL_POSITION_NUM, 1);
+        values.put(COL_IS_STARTER, 0);
         db.insert(PLAYERS_TABLE, null, values);
 
         values.put(COL_PLAYER_NAME, "Nick 'Swaggy P' Young");
@@ -141,6 +153,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(COL_ROOKIE_YEAR, 2008);
         values.put(COL_POSITION, "Forward");
         values.put(COL_POSITION_NUM, 3);
+        values.put(COL_IS_STARTER, 0);
         db.insert(PLAYERS_TABLE, null, values);
 
         values.put(COL_PLAYER_NAME, "Roy Hibbert");
@@ -148,6 +161,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(COL_ROOKIE_YEAR, 2009);
         values.put(COL_POSITION, "Center");
         values.put(COL_POSITION_NUM, 5);
+        values.put(COL_IS_STARTER, 0);
         db.insert(PLAYERS_TABLE, null, values);
 
     }

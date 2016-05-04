@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
         startersButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent engageStarters = new Intent(MainActivity.this, StarterListActivity.class);
+                Intent engageStarters = new Intent(MainActivity.this, StarterList.class);
                 startActivity(engageStarters);
             }
         });
