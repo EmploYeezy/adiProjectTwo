@@ -2,6 +2,7 @@ package com.example.employeezy.adiprojecttwo;
 
 import android.content.Context;
 import android.database.Cursor;
+import android.database.DatabaseUtils;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
@@ -21,7 +22,10 @@ public class RosterList extends AppCompatActivity {
         ListView rosterList = (ListView) findViewById(R.id.roster_list);
         Cursor cursor = DatabaseHelper.getInstance(RosterList.this).getRosterData();
 
+        DatabaseUtils.dumpCursor(cursor);
+
         CursorAdapter rosterAdapter = new CursorAdapter(this, cursor, 0) {
+
             @Override
             public View newView(Context context, Cursor cursor, ViewGroup parent) {
                 LayoutInflater layoutInflater = LayoutInflater.from(context);

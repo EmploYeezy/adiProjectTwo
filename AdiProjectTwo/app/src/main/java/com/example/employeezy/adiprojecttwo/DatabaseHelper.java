@@ -12,19 +12,19 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
 
-    public static final int DATABASE_VERSION = 3;
+    public static final int DATABASE_VERSION = 4;
     public static final String DATABASE_NAME = "Players.db";
 
     public static final String PLAYERS_TABLE = "players";
 
     public static final String COL_PLAYER_ID = "_id";
-    public static final String COL_PLAYER_NAME = "player name";
+    public static final String COL_PLAYER_NAME = "player_name";
     public static final String COL_PLAYER_NUM = "player_number";
     public static final String COL_ROOKIE_YEAR = "rookie_year";
     public static final String COL_POSITION = "position";
     public static final String COL_POSITION_NUM = "position_number";
 
-    public static final String[] COL_NAMES = {COL_PLAYER_ID, COL_PLAYER_NUM, COL_ROOKIE_YEAR,
+    public static final String[] COL_NAMES = {COL_PLAYER_NAME, COL_PLAYER_ID, COL_PLAYER_NUM, COL_ROOKIE_YEAR,
             COL_POSITION, COL_POSITION_NUM};
 
     private static final String CREATE_PLAYERS_TABLE =
