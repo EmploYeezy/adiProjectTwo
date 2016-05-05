@@ -10,11 +10,28 @@
     tools:context="com.example.employeezy.adiprojecttwo.PlayerProfileActivity">
 
     <TextView
-
-        android:id="@+id/made_it"
+        android:id="@+id/profile_player_ID"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-
-        />
+        android:layout_height="wrap_content" />
+    <TextView
+        android:id="@+id/profile_player_name"
+        android:layout_below="@+id/profile_player_ID"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:id="@+id/profile_player_number"
+        android:layout_below="@+id/profile_player_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    <TextView
+        android:id="@+id/profile_rookie_year"
+        android:layout_below="@+id/profile_player_number"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:id="@+id/profile_position"
+        android:layout_below="@+id/profile_rookie_year"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 
 </RelativeLayout>

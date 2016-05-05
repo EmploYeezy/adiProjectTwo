@@ -64,6 +64,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         onCreate(db);
     }
 
+//    public Cursor getPLayer (int id){
+//        SQLiteDatabase db = this.getReadableDatabase();
+//        db.rawQuery("SELECT * From players_table where id = " + id, null);
+//    }
+
     //pulls the entire roster and displays it in a list in descending order
     //by Position number (5,4,3,2,1)
     public Cursor getRosterData(){
