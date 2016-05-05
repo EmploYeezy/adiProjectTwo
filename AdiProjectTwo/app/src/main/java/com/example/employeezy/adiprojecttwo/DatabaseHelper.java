@@ -10,6 +10,7 @@ import android.database.sqlite.SQLiteOpenHelper;
  * Created by EmployYeezy on 5/2/16.
  */
 
+//SQLite Database helper
 public class DatabaseHelper extends SQLiteOpenHelper {
 
     public static final int DATABASE_VERSION = 6;
@@ -105,7 +106,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         String[] selectionsArgs = new String[] {
              "%" + query + "%", "%" + query + "%"
         };
-
         Cursor cursor = db.query(PLAYERS_TABLE, // a.table
                 COL_NAMES, // b. column names
                 selections, // c. selections
@@ -117,14 +117,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return cursor;
     }
 
+    //searches the db for numbers
     public Cursor searchForNumbers (Integer query) {
         SQLiteDatabase db = this.getReadableDatabase();
 
-        String selections = "player_number like ? or rookie_year like?";
+        String selections = "player_number like ? or rookie_year like ?";
         String[] selectionsArgs = new String[]{
                 "%" + query + "%", "%" + query + "%"
         };
-
         Cursor cursor = db.query(PLAYERS_TABLE, // a.table
                 COL_NAMES, // b. column names
                 selections, // c. selections

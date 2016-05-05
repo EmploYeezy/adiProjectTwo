@@ -16,3 +16,11 @@ theERD:
 theERD(depricated):
 ![](projTwo/playerListErd.jpg)
 
+#Manual Tests!
+######eightToBePrecise
+
+1. When a user clicks search, a qwerty keyboard should appear to allow them to type a search. 
+2. If a user clicks the back button, the data should presist.
+3. When a user clicks a Player's name more information should become available.
+4. Information should remain constant on the player profile page, no matter where a user clicks from.
+5. 

@@ -21,7 +21,7 @@ public class StarterList extends AppCompatActivity {
         setContentView(R.layout.activity_starter_list);
 
         final ListView starterList = (ListView) findViewById(R.id.starter_list);
-        Cursor cursor = DatabaseHelper.getInstance(StarterList.this).getStarterData();
+        final Cursor cursor = DatabaseHelper.getInstance(StarterList.this).getStarterData();
 
         CursorAdapter starterAdapter = new CursorAdapter(this, cursor, 0) {
             @Override
@@ -44,13 +44,23 @@ public class StarterList extends AppCompatActivity {
         };
 
         starterList.setAdapter(starterAdapter);
-
+        //sends all the player information to the profile view
         starterList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(getApplicationContext(), PlayerProfileActivity.class);
-                String playerName = ((TextView) view.findViewById(R.id.starter_player_name)).getText().toString();
-                intent.putExtra("playerName", playerName);
+                String playerDBID = cursor.getString(cursor.getColumnIndex(DatabaseHelper.COL_PLAYER_ID));
+                String playerNameForIntent = cursor.getString(cursor.getColumnIndex(DatabaseHelper.COL_PLAYER_NAME));
+                String playerNumForIntent = cursor.getString(cursor.getColumnIndex(DatabaseHelper.COL_PLAYER_NUM));
+                String playerRookieYearForIntent = cursor.getString(cursor.getColumnIndex(DatabaseHelper.COL_ROOKIE_YEAR));
+                String playerPositionForIntent = cursor.getString(cursor.getColumnIndex(DatabaseHelper.COL_POSITION));
+                String playerIsStarter = cursor.getString(cursor.getColumnIndex(DatabaseHelper.COL_IS_STARTER));
+                intent.putExtra("playerID", playerDBID);
+                intent.putExtra("playerName", playerNameForIntent);
+                intent.putExtra("playerNum", playerNumForIntent);
+                intent.putExtra("rookieYear", playerRookieYearForIntent);
+                intent.putExtra("playerPosition", playerPositionForIntent);
+                intent.putExtra("playerIsStarter", playerIsStarter);
                 startActivity(intent);
             }
         });

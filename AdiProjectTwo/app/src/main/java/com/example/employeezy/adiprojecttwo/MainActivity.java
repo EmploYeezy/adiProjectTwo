@@ -48,7 +48,6 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(engageStarters);
             }
         });
-
     }
 
     ////Beings search function.
@@ -74,6 +73,8 @@ public class MainActivity extends AppCompatActivity {
         if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
             String query = intent.getStringExtra(SearchManager.QUERY);
 
+            //This if statement uses a Regex to determine if the input from the user is an Integer
+            //or a string. If it's an integer the cursor goes to searchForNumbers, else searchNames.
             final Cursor cursor;
             if(query.matches("^-?\\d+$"))
                 cursor = DatabaseHelper.getInstance(MainActivity.this).searchForNumbers(Integer.parseInt(query));
@@ -100,7 +101,7 @@ public class MainActivity extends AppCompatActivity {
             };
             mainActivityList.setAdapter(mainActivityAdapter);
 
-            //
+            //Sends player profile data to be populated in profile view
             mainActivityList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -120,8 +121,6 @@ public class MainActivity extends AppCompatActivity {
                     startActivity(intent);
                 }
             });
-
         }
     }
-
 }

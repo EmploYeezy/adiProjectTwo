@@ -33,11 +33,3 @@ public class PlayerProfileActivity extends AppCompatActivity {
 
     }
 }
-
-
-//intent.putExtra("playerID", playerDBID);
-//intent.putExtra("playerName", playerNameForIntent);
-//        intent.putExtra("playerNum", playerNumForIntent);
-//        intent.putExtra("rookieYear", playerRookieYearForIntent);
-//        intent.putExtra("playerPosition", playerPositionForIntent);
-//        intent.putExtra("playerIsStarter", playerIsStarter);
