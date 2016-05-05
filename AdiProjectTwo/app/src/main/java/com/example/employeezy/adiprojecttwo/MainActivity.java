@@ -3,6 +3,7 @@ package com.example.employeezy.adiprojecttwo;
 import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.SearchView;
@@ -10,7 +11,6 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -69,7 +69,9 @@ public class MainActivity extends AppCompatActivity {
     private void handleIntent(Intent intent) {
         if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
             String query = intent.getStringExtra(SearchManager.QUERY);
-            Toast.makeText(MainActivity.this,"Searching for "+query,Toast.LENGTH_SHORT).show();
+            Cursor cursor = DatabaseHelper.getInstance(MainActivity.this).searchNames(query);
+
+
         }
 
     }

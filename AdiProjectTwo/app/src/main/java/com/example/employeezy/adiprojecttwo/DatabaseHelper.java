@@ -101,19 +101,21 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 null, // g. order by
                 null); // h. limit
         return cursor;
-
     }
 
-
-
-
-
-
-
-
-
-
-
+    //Cursor to search names in the db
+    public Cursor searchNames(String query) {
+       SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.query(PLAYERS_TABLE, // a.table
+                COL_NAMES, // b. column names
+                null, // c. selections
+                null, // d. selections args
+                null, // e. group by
+                null, // f. having
+                null, // g. order by
+                null); // h. limit
+        return cursor;
+    }
 
 
     ///////\/\\\\\\\***************BEGIN HARD CODED DATABASE*****************////////////\/\\\\\\\\\
