@@ -70,9 +70,10 @@ public class MainActivity extends AppCompatActivity {
         if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
             String query = intent.getStringExtra(SearchManager.QUERY);
             Cursor cursor = DatabaseHelper.getInstance(MainActivity.this).searchNames(query);
-
-
         }
+
+
+
 
     }
 

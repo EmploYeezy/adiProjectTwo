@@ -108,7 +108,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
        SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.query(PLAYERS_TABLE, // a.table
                 COL_NAMES, // b. column names
-                null, // c. selections
+                query, // c. selections
                 null, // d. selections args
                 null, // e. group by
                 null, // f. having
