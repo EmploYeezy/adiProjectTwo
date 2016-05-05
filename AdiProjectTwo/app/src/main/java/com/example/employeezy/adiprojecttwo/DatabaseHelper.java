@@ -64,11 +64,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-//    public Cursor getPLayer (int id){
-//        SQLiteDatabase db = this.getReadableDatabase();
-//        db.rawQuery("SELECT * From players_table where id = " + id, null);
-//    }
-
     //pulls the entire roster and displays it in a list in descending order
     //by Position number (5,4,3,2,1)
     public Cursor getRosterData(){
@@ -106,9 +101,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public Cursor searchNames(String query) {
        SQLiteDatabase db = this.getReadableDatabase();
 
-        String selections = "player_name = ?";
+        String selections = "player_name like ? or position like ?";
         String[] selectionsArgs = new String[] {
-               query
+             "%" + query + "%", "%" + query + "%"
         };
 
         Cursor cursor = db.query(PLAYERS_TABLE, // a.table
@@ -121,6 +116,26 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 null); // h. limit
         return cursor;
     }
+
+    public Cursor searchForNumbers (Integer query) {
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        String selections = "player_number like ? or rookie_year like?";
+        String[] selectionsArgs = new String[]{
+                "%" + query + "%", "%" + query + "%"
+        };
+
+        Cursor cursor = db.query(PLAYERS_TABLE, // a.table
+                COL_NAMES, // b. column names
+                selections, // c. selections
+                selectionsArgs, // d. selections args
+                null, // e. group by
+                null, // f. having
+                null, // g. order by
+                null); // h. limit
+        return cursor;
+    }
+
 
 
     ///////\/\\\\\\\***************BEGIN HARD CODED DATABASE*****************////////////\/\\\\\\\\\

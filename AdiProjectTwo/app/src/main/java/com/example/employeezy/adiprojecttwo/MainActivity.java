@@ -12,6 +12,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.CursorAdapter;
 import android.widget.ListView;
@@ -72,12 +73,16 @@ public class MainActivity extends AppCompatActivity {
     private void handleIntent(Intent intent) {
         if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
             String query = intent.getStringExtra(SearchManager.QUERY);
-            Cursor cursor = DatabaseHelper.getInstance(MainActivity.this).searchNames(query);
+
+            final Cursor cursor;
+            if(query.matches("^-?\\d+$"))
+                cursor = DatabaseHelper.getInstance(MainActivity.this).searchForNumbers(Integer.parseInt(query));
+            else
+                cursor = DatabaseHelper.getInstance(MainActivity.this).searchNames(query);
+
             ListView mainActivityList = (ListView) findViewById(R.id.main_activity_list);
 
-            //DatabaseUtils.dumpCursor(cursor);
-
-            //search results viewer
+            //search result shower
             CursorAdapter mainActivityAdapter = new CursorAdapter(this, cursor, 0) {
                 @Override
                 public View newView(Context context, Cursor cursor, ViewGroup parent) {
@@ -94,8 +99,29 @@ public class MainActivity extends AppCompatActivity {
                 }
             };
             mainActivityList.setAdapter(mainActivityAdapter);
-            //mainActivityAdapter.swapCursor(cursor);
+
+            //
+            mainActivityList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    Intent intent = new Intent(getApplicationContext(), PlayerProfileActivity.class);
+                    String playerDBID = cursor.getString(cursor.getColumnIndex(DatabaseHelper.COL_PLAYER_ID));
+                    String playerNameForIntent = cursor.getString(cursor.getColumnIndex(DatabaseHelper.COL_PLAYER_NAME));
+                    String playerNumForIntent = cursor.getString(cursor.getColumnIndex(DatabaseHelper.COL_PLAYER_NUM));
+                    String playerRookieYearForIntent = cursor.getString(cursor.getColumnIndex(DatabaseHelper.COL_ROOKIE_YEAR));
+                    String playerPositionForIntent = cursor.getString(cursor.getColumnIndex(DatabaseHelper.COL_POSITION));
+                    String playerIsStarter = cursor.getString(cursor.getColumnIndex(DatabaseHelper.COL_IS_STARTER));
+                    intent.putExtra("playerID", playerDBID);
+                    intent.putExtra("playerName", playerNameForIntent);
+                    intent.putExtra("playerNum", playerNumForIntent);
+                    intent.putExtra("rookieYear", playerRookieYearForIntent);
+                    intent.putExtra("playerPosition", playerPositionForIntent);
+                    intent.putExtra("playerIsStarter", playerIsStarter);
+                    startActivity(intent);
+                }
+            });
 
         }
     }
+
 }
