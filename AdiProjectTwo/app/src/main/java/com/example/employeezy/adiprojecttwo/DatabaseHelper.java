@@ -91,7 +91,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         String[] selectionsArgs = new String[] {
                 String.valueOf(1)
         };
-
         Cursor cursor = db.query(PLAYERS_TABLE, // a. table
                 COL_NAMES, // b. column names
                 selections, // c. selections
@@ -106,10 +105,16 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     //Cursor to search names in the db
     public Cursor searchNames(String query) {
        SQLiteDatabase db = this.getReadableDatabase();
+
+        String selections = "player_name = ?";
+        String[] selectionsArgs = new String[] {
+               query
+        };
+
         Cursor cursor = db.query(PLAYERS_TABLE, // a.table
                 COL_NAMES, // b. column names
-                query, // c. selections
-                null, // d. selections args
+                selections, // c. selections
+                selectionsArgs, // d. selections args
                 null, // e. group by
                 null, // f. having
                 null, // g. order by
