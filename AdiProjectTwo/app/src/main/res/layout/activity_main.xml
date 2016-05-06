@@ -20,7 +20,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
+        android:background="#2f1448"
         android:text="players"
+        android:fontFamily="sans-serif-smallcaps"
+        android:textColor="#FDB927"
         android:textSize="30dp"/>
 
     <Button
@@ -29,13 +32,18 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
+        android:background="#2f1448"
         android:text="Starting Lineup"
+        android:fontFamily="sans-serif-smallcaps"
+        android:textColor="#FDB927"
         android:textSize="30dp"/>
 
     <ListView
         android:id="@+id/main_activity_list"
         android:layout_below="@id/starters_button"
         android:layout_marginTop="40dp"
+        android:layout_centerInParent="true"
+        android:animateLayoutChanges="true"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
 

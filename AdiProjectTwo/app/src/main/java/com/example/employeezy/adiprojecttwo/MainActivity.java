@@ -25,6 +25,9 @@ public class MainActivity extends AppCompatActivity {
 
     //Buttons on home screen
     @Override
+
+
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);

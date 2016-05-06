@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">AdiProjectTwo</string>
-    <string name="label">label</string>
-    <string name="hint">hint</string>
+    <string name="app_name">find a player</string>
+    <string name="label">find a player</string>
+    <string name="Lakers">find a player</string>
 </resources>
