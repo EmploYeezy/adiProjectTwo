@@ -101,7 +101,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     //Cursor to search names in the db
     public Cursor searchNames(String query) {
        SQLiteDatabase db = this.getReadableDatabase();
-
         String selections = "player_name like ? or position like ?";
         String[] selectionsArgs = new String[] {
              "%" + query + "%", "%" + query + "%"
@@ -135,8 +134,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 null); // h. limit
         return cursor;
     }
-
-
 
     ///////\/\\\\\\\***************BEGIN HARD CODED DATABASE*****************////////////\/\\\\\\\\\
     private void loadPlayersTable(SQLiteDatabase db) {
@@ -237,7 +234,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(COL_POSITION_NUM, 5);
         values.put(COL_IS_STARTER, 0);
         db.insert(PLAYERS_TABLE, null, values);
+        ////////\/\///////*************END HARD CODED DATABASE********************////////\/\///////
     }
-    ////////\/\/////////*************END HARD CODED DATABASE**********************////////\/\///////
 }
 

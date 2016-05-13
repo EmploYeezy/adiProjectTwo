@@ -8,6 +8,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.AdapterView;
 import android.widget.CursorAdapter;
 import android.widget.ListView;
@@ -45,10 +47,11 @@ public class RosterList extends AppCompatActivity {
                 String rookieYearGetter = cursor.getString(cursor.getColumnIndex(DatabaseHelper.COL_ROOKIE_YEAR));
                 rosterYear.setText(rookieYearGetter);
             }
-
         };
-
         rosterList.setAdapter(rosterAdapter);
+        Animation animation = AnimationUtils.loadAnimation(this, R.anim.animation);
+        rosterList.startAnimation(animation);
+
 
         rosterList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -69,6 +72,5 @@ public class RosterList extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
     }
 }

@@ -12,6 +12,8 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.CursorAdapter;
@@ -26,8 +28,6 @@ public class MainActivity extends AppCompatActivity {
     //Buttons on home screen
     @Override
 
-
-
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
@@ -35,6 +35,9 @@ public class MainActivity extends AppCompatActivity {
 
         //makes the Player button on the homes screen goto the roster list
         rosterListButton = (Button) findViewById(R.id.roster_list_button);
+        Animation animation = AnimationUtils.loadAnimation(this, R.anim.twist);
+        rosterListButton.startAnimation(animation);
+
         rosterListButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -44,6 +47,9 @@ public class MainActivity extends AppCompatActivity {
         });
         //makes the Starting Lineup button on the home screen goto the starters list
         startersButton = (Button) findViewById(R.id.starters_button);
+        Animation animation1 = AnimationUtils.loadAnimation(this, R.anim.twist2);
+        startersButton.startAnimation(animation1);
+
         startersButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -103,6 +109,8 @@ public class MainActivity extends AppCompatActivity {
                 }
             };
             mainActivityList.setAdapter(mainActivityAdapter);
+            Animation animation = AnimationUtils.loadAnimation(this, R.anim.animation);
+            mainActivityList.startAnimation(animation);
 
             //Sends player profile data to be populated in profile view
             mainActivityList.setOnItemClickListener(new AdapterView.OnItemClickListener() {

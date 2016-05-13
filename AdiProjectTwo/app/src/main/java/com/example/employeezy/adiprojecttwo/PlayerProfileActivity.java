@@ -12,12 +12,10 @@ public class PlayerProfileActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_player_profile);
 
-
         Intent intent = getIntent();
 
         //sets variables and puts data from intent from either MainActivity, RosterList, or StarterList
         //into a template for a Profile view
-
         String profilePlayerName = intent.getStringExtra("playerName");
         String profileNumber = intent.getStringExtra("playerNum");
         String profileRookieYear = intent.getStringExtra("rookieYear");
@@ -33,6 +31,5 @@ public class PlayerProfileActivity extends AppCompatActivity {
         profileYear.setText("Has been in the NBA since " + profileRookieYear);
         TextView profilePosition = (TextView) findViewById(R.id.profile_position);
         profilePosition.setText("He is a " + profilePlayerPosition + " for Los Angeles");
-
     }
 }

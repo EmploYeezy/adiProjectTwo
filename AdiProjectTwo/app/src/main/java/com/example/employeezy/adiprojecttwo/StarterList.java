@@ -64,6 +64,5 @@ public class StarterList extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
     }
 }
